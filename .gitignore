@@ -1,0 +1,14 @@
+node_modules/
+.env
+*.log
+.DS_Store
+dist/
+build/
+coverage/
+android/
+ios/
+web-build/
+*.apk
+*.aab
+*.ipa
+.gradle/
