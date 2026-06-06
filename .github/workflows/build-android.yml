@@ -32,9 +32,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Sync Capacitor Android
+      - name: Setup Capacitor Android
         run: |
           npm install @capacitor/cli
+          npx cap add android
           npx cap sync android
 
       - name: Build debug APK
@@ -93,7 +94,11 @@ jobs:
 
       - run: npm install
 
-      - run: npx cap sync android
+      - name: Setup Capacitor Android
+        run: |
+          npm install @capacitor/cli
+          npx cap add android
+          npx cap sync android
 
       - name: Decode keystore
         run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android/app/shinken.jks
