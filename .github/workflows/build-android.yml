@@ -21,7 +21,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - uses: actions/setup-java@v4
         with:
@@ -65,7 +64,7 @@ jobs:
           body: |
             ## SHINKEN Android APK - v${{ github.run_number }}
             Commit: `${{ github.sha }}`
-            
+
             **Installation :**
             1. Télécharge le fichier `.apk`
             2. Active "Sources inconnues" sur Android
@@ -80,13 +79,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
-        with: { node-version: '20' }
+        with:
+          node-version: '20'
+
       - uses: actions/setup-java@v4
-        with: { java-version: '17', distribution: 'temurin' }
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
       - uses: android-actions/setup-android@v3
 
       - run: npm install
+
       - run: npx cap sync android
 
       - name: Decode keystore
