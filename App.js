@@ -15,6 +15,7 @@ export default function App() {
     initApiUrl();
   }, []);
 
+  
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
